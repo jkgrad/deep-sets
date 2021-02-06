@@ -22,7 +22,7 @@ A permutation invariant function acting on a set input is defined to be a functi
 
 Such functions can be decomposed in the following form, which we can exploit in building the neural network architecture. 
 <p align="center">
-  <img align="center" src="https://github.com/jkgrad/deep-sets/blob/main/assets/perm-invariant-decompose.png" height="25">
+  <img align="center" src="https://github.com/jkgrad/deep-sets/blob/main/assets/perm-invariant-decompose.png" height="60">
 </p>
 
 ### Permutation Equivariant Functions
