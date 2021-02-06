@@ -2,7 +2,13 @@
 This repository contains an experimental re-implementation of Deep Sets architecture, proposed in 2017 paper [Deep Sets](https://arxiv.org/pdf/1703.06114.pdf). 
 
 ## Deep Sets
-Deep sets architecture aims to approximate functions acting on a set. To be more mathematically accurate, deep sets will approximate a mapping from a power set of some set to a target space (real space for regression and discrete space for classification task). The most notable contribution of such architectures are:
+Deep sets architecture aims to approximate functions acting on a set. To be more mathematically accurate, deep sets will approximate a mapping from a power set of some set to a target space (real space for regression and discrete space for classification task). 
+
+<p align="center">
+  <img align="center" src="https://github.com/jkgrad/deep-sets/blob/main/assets/objective.png" height="25">
+</p>
+
+Some of the advantages of using such architectures are:
 
 - Can learn permutation invariant / equivariant functions
 - Can take inputs of different length (must be padded accordingly)
@@ -16,7 +22,7 @@ A permutation invariant function acting on a set input is defined to be a functi
 
 Such functions can be decomposed in the following form, which we can exploit in building the neural network architecture. 
 <p align="center">
-  <img align="center" src="https://github.com/jkgrad/deep-sets/blob/main/assets/perm-invariant-decompose.png" height="60">
+  <img align="center" src="https://github.com/jkgrad/deep-sets/blob/main/assets/perm-invariant-decompose.png" height="25">
 </p>
 
 ### Permutation Equivariant Functions
@@ -38,3 +44,7 @@ DigitFuncApproximator(
 )
 ```
 
+### TO-DO
+- Add benchmarks
+- Add baseline models
+- Add more examplary datasets.
