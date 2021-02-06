@@ -24,7 +24,8 @@ A permutation equivariant function acting on a set input is defined to be a func
 <p align="center">
   <img src="https://github.com/jkgrad/deep-sets/blob/main/assets/perm-equivariant.png" height="25">
 </p>
-## Notes
+
+### Notes
 The current implementation includes a permutation invariant function approximator on set of digits with some more rooms to improve. Note that following architecture was experimented for approximating a sum of digits. 
 
 ```python
