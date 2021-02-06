@@ -1,0 +1,204 @@
+2021-02-06 01:28:54 |        train.py |    INFO |   <module> | Configurations ...
+2021-02-06 01:28:54 |        train.py |    INFO |   <module> | n_train_samples = 100000
+n_valid_samples = 10000
+max_n_elements = 10
+function = lambda x: torch.max(x[x > 0], dim=-1)
+train_path = data/train.pkl
+valid_path = data/valid.pkl
+save_path = checkpoint
+device = cuda
+n_epochs = 10
+batch_sz = 128
+save_step = 100
+log_every = 100
+learning_rate = 0.0001
+gradient_accumulation_step = 1
+weight_decay = 0.0
+optimizer = Adam
+criterion = L1Loss
+d_embed = 100
+d_hidden = 30
+activation = Tanh
+seed = 42
+
+2021-02-06 01:28:54 |        train.py |    INFO |   <module> | Setting seed to 42 ...
+2021-02-06 01:28:54 |        train.py |    INFO |   <module> | Begin Training ...
+2021-02-06 01:28:54 |        train.py |    INFO |      train | DigitFuncApproximator(
+  (embed): Embedding(11, 100, padding_idx=0)
+  (dense): Linear(in_features=100, out_features=30, bias=True)
+  (actvt): Tanh()
+  (encde): Linear(in_features=30, out_features=1, bias=True)
+)
+2021-02-06 01:28:55 |        train.py |    INFO |      train | Begin Epoch 0 ...
+2021-02-06 01:28:56 |        train.py |    INFO |      train | Epoch 0.1278772378516624 Loss : 3.357755184173584
+2021-02-06 01:28:56 |        train.py |    INFO |      train | Validation Accuracy : 0.0559
+2021-02-06 01:28:56 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:28:57 |        train.py |    INFO |      train | Epoch 0.2557544757033248 Loss : 2.3584911823272705
+2021-02-06 01:28:57 |        train.py |    INFO |      train | Validation Accuracy : 0.1357
+2021-02-06 01:28:57 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:28:57 |        train.py |    INFO |      train | Epoch 0.3836317135549872 Loss : 2.2178003787994385
+2021-02-06 01:28:57 |        train.py |    INFO |      train | Validation Accuracy : 0.14
+2021-02-06 01:28:57 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:28:58 |        train.py |    INFO |      train | Epoch 0.5115089514066496 Loss : 2.09434175491333
+2021-02-06 01:28:58 |        train.py |    INFO |      train | Validation Accuracy : 0.1466
+2021-02-06 01:28:58 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:28:58 |        train.py |    INFO |      train | Epoch 0.639386189258312 Loss : 2.078153133392334
+2021-02-06 01:28:58 |        train.py |    INFO |      train | Validation Accuracy : 0.1539
+2021-02-06 01:28:58 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:28:59 |        train.py |    INFO |      train | Epoch 0.7672634271099744 Loss : 1.6123144626617432
+2021-02-06 01:28:59 |        train.py |    INFO |      train | Validation Accuracy : 0.1576
+2021-02-06 01:28:59 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:28:59 |        train.py |    INFO |      train | Epoch 0.8951406649616368 Loss : 1.5398130416870117
+2021-02-06 01:28:59 |        train.py |    INFO |      train | Validation Accuracy : 0.1691
+2021-02-06 01:28:59 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:28:59 |        train.py |    INFO |      train | Begin Epoch 1 ...
+2021-02-06 01:29:00 |        train.py |    INFO |      train | Epoch 1.1278772378516624 Loss : 1.6604478359222412
+2021-02-06 01:29:00 |        train.py |    INFO |      train | Validation Accuracy : 0.1915
+2021-02-06 01:29:00 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:29:00 |        train.py |    INFO |      train | Epoch 1.2557544757033248 Loss : 1.5778590440750122
+2021-02-06 01:29:00 |        train.py |    INFO |      train | Validation Accuracy : 0.2008
+2021-02-06 01:29:00 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:29:01 |        train.py |    INFO |      train | Epoch 1.3836317135549872 Loss : 1.5647386312484741
+2021-02-06 01:29:01 |        train.py |    INFO |      train | Validation Accuracy : 0.2179
+2021-02-06 01:29:01 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:29:01 |        train.py |    INFO |      train | Epoch 1.5115089514066495 Loss : 1.2817379236221313
+2021-02-06 01:29:01 |        train.py |    INFO |      train | Validation Accuracy : 0.231
+2021-02-06 01:29:01 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:29:02 |        train.py |    INFO |      train | Epoch 1.6393861892583121 Loss : 1.2713468074798584
+2021-02-06 01:29:02 |        train.py |    INFO |      train | Validation Accuracy : 0.2534
+2021-02-06 01:29:02 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:29:02 |        train.py |    INFO |      train | Epoch 1.7672634271099743 Loss : 1.1515105962753296
+2021-02-06 01:29:02 |        train.py |    INFO |      train | Validation Accuracy : 0.2762
+2021-02-06 01:29:02 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:29:03 |        train.py |    INFO |      train | Epoch 1.895140664961637 Loss : 0.9978113770484924
+2021-02-06 01:29:03 |        train.py |    INFO |      train | Validation Accuracy : 0.3027
+2021-02-06 01:29:03 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:29:03 |        train.py |    INFO |      train | Begin Epoch 2 ...
+2021-02-06 01:29:03 |        train.py |    INFO |      train | Epoch 2.1278772378516626 Loss : 0.9660384058952332
+2021-02-06 01:29:04 |        train.py |    INFO |      train | Validation Accuracy : 0.3409
+2021-02-06 01:29:04 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:29:04 |        train.py |    INFO |      train | Epoch 2.2557544757033248 Loss : 0.8812019228935242
+2021-02-06 01:29:04 |        train.py |    INFO |      train | Validation Accuracy : 0.3758
+2021-02-06 01:29:04 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:29:04 |        train.py |    INFO |      train | Epoch 2.3836317135549874 Loss : 0.901044487953186
+2021-02-06 01:29:05 |        train.py |    INFO |      train | Validation Accuracy : 0.3984
+2021-02-06 01:29:05 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:29:05 |        train.py |    INFO |      train | Epoch 2.5115089514066495 Loss : 0.756788969039917
+2021-02-06 01:29:05 |        train.py |    INFO |      train | Validation Accuracy : 0.4019
+2021-02-06 01:29:05 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:29:05 |        train.py |    INFO |      train | Epoch 2.639386189258312 Loss : 0.7284348607063293
+2021-02-06 01:29:06 |        train.py |    INFO |      train | Validation Accuracy : 0.401
+2021-02-06 01:29:06 |        train.py |    INFO |      train | Epoch 2.7672634271099743 Loss : 0.9122112989425659
+2021-02-06 01:29:06 |        train.py |    INFO |      train | Validation Accuracy : 0.4047
+2021-02-06 01:29:06 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:29:06 |        train.py |    INFO |      train | Epoch 2.895140664961637 Loss : 0.8811220526695251
+2021-02-06 01:29:06 |        train.py |    INFO |      train | Validation Accuracy : 0.3876
+2021-02-06 01:29:07 |        train.py |    INFO |      train | Begin Epoch 3 ...
+2021-02-06 01:29:07 |        train.py |    INFO |      train | Epoch 3.1278772378516626 Loss : 0.8005056381225586
+2021-02-06 01:29:07 |        train.py |    INFO |      train | Validation Accuracy : 0.4223
+2021-02-06 01:29:07 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:29:08 |        train.py |    INFO |      train | Epoch 3.2557544757033248 Loss : 0.8387813568115234
+2021-02-06 01:29:08 |        train.py |    INFO |      train | Validation Accuracy : 0.4127
+2021-02-06 01:29:08 |        train.py |    INFO |      train | Epoch 3.3836317135549874 Loss : 0.770612895488739
+2021-02-06 01:29:08 |        train.py |    INFO |      train | Validation Accuracy : 0.4142
+2021-02-06 01:29:08 |        train.py |    INFO |      train | Epoch 3.5115089514066495 Loss : 0.9520904421806335
+2021-02-06 01:29:09 |        train.py |    INFO |      train | Validation Accuracy : 0.3812
+2021-02-06 01:29:09 |        train.py |    INFO |      train | Epoch 3.639386189258312 Loss : 0.9485372304916382
+2021-02-06 01:29:09 |        train.py |    INFO |      train | Validation Accuracy : 0.4003
+2021-02-06 01:29:09 |        train.py |    INFO |      train | Epoch 3.7672634271099743 Loss : 0.7727445960044861
+2021-02-06 01:29:10 |        train.py |    INFO |      train | Validation Accuracy : 0.4068
+2021-02-06 01:29:10 |        train.py |    INFO |      train | Epoch 3.895140664961637 Loss : 0.885075569152832
+2021-02-06 01:29:10 |        train.py |    INFO |      train | Validation Accuracy : 0.3932
+2021-02-06 01:29:10 |        train.py |    INFO |      train | Begin Epoch 4 ...
+2021-02-06 01:29:11 |        train.py |    INFO |      train | Epoch 4.127877237851663 Loss : 0.8493629693984985
+2021-02-06 01:29:11 |        train.py |    INFO |      train | Validation Accuracy : 0.3913
+2021-02-06 01:29:11 |        train.py |    INFO |      train | Epoch 4.255754475703325 Loss : 0.7927499413490295
+2021-02-06 01:29:11 |        train.py |    INFO |      train | Validation Accuracy : 0.3797
+2021-02-06 01:29:12 |        train.py |    INFO |      train | Epoch 4.383631713554987 Loss : 0.9513497352600098
+2021-02-06 01:29:12 |        train.py |    INFO |      train | Validation Accuracy : 0.3783
+2021-02-06 01:29:12 |        train.py |    INFO |      train | Epoch 4.5115089514066495 Loss : 0.970197856426239
+2021-02-06 01:29:12 |        train.py |    INFO |      train | Validation Accuracy : 0.4214
+2021-02-06 01:29:12 |        train.py |    INFO |      train | Epoch 4.639386189258312 Loss : 0.9226036071777344
+2021-02-06 01:29:13 |        train.py |    INFO |      train | Validation Accuracy : 0.4011
+2021-02-06 01:29:13 |        train.py |    INFO |      train | Epoch 4.767263427109975 Loss : 0.862370491027832
+2021-02-06 01:29:13 |        train.py |    INFO |      train | Validation Accuracy : 0.4102
+2021-02-06 01:29:13 |        train.py |    INFO |      train | Epoch 4.8951406649616365 Loss : 1.0283886194229126
+2021-02-06 01:29:14 |        train.py |    INFO |      train | Validation Accuracy : 0.3972
+2021-02-06 01:29:14 |        train.py |    INFO |      train | Begin Epoch 5 ...
+2021-02-06 01:29:14 |        train.py |    INFO |      train | Epoch 5.127877237851663 Loss : 0.7178053855895996
+2021-02-06 01:29:14 |        train.py |    INFO |      train | Validation Accuracy : 0.4201
+2021-02-06 01:29:15 |        train.py |    INFO |      train | Epoch 5.255754475703325 Loss : 0.940324068069458
+2021-02-06 01:29:15 |        train.py |    INFO |      train | Validation Accuracy : 0.4015
+2021-02-06 01:29:15 |        train.py |    INFO |      train | Epoch 5.383631713554987 Loss : 0.9638828039169312
+2021-02-06 01:29:15 |        train.py |    INFO |      train | Validation Accuracy : 0.4028
+2021-02-06 01:29:16 |        train.py |    INFO |      train | Epoch 5.5115089514066495 Loss : 1.039408802986145
+2021-02-06 01:29:16 |        train.py |    INFO |      train | Validation Accuracy : 0.4188
+2021-02-06 01:29:16 |        train.py |    INFO |      train | Epoch 5.639386189258312 Loss : 0.8362706303596497
+2021-02-06 01:29:16 |        train.py |    INFO |      train | Validation Accuracy : 0.4103
+2021-02-06 01:29:17 |        train.py |    INFO |      train | Epoch 5.767263427109975 Loss : 0.9043512344360352
+2021-02-06 01:29:17 |        train.py |    INFO |      train | Validation Accuracy : 0.4234
+2021-02-06 01:29:17 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:29:17 |        train.py |    INFO |      train | Epoch 5.8951406649616365 Loss : 0.7953988909721375
+2021-02-06 01:29:17 |        train.py |    INFO |      train | Validation Accuracy : 0.3906
+2021-02-06 01:29:18 |        train.py |    INFO |      train | Begin Epoch 6 ...
+2021-02-06 01:29:18 |        train.py |    INFO |      train | Epoch 6.127877237851663 Loss : 0.9172263145446777
+2021-02-06 01:29:18 |        train.py |    INFO |      train | Validation Accuracy : 0.4077
+2021-02-06 01:29:18 |        train.py |    INFO |      train | Epoch 6.255754475703325 Loss : 1.0072696208953857
+2021-02-06 01:29:18 |        train.py |    INFO |      train | Validation Accuracy : 0.4048
+2021-02-06 01:29:19 |        train.py |    INFO |      train | Epoch 6.383631713554987 Loss : 0.8199858665466309
+2021-02-06 01:29:19 |        train.py |    INFO |      train | Validation Accuracy : 0.3985
+2021-02-06 01:29:19 |        train.py |    INFO |      train | Epoch 6.5115089514066495 Loss : 0.9670200943946838
+2021-02-06 01:29:19 |        train.py |    INFO |      train | Validation Accuracy : 0.3872
+2021-02-06 01:29:20 |        train.py |    INFO |      train | Epoch 6.639386189258312 Loss : 0.8540600538253784
+2021-02-06 01:29:20 |        train.py |    INFO |      train | Validation Accuracy : 0.4076
+2021-02-06 01:29:20 |        train.py |    INFO |      train | Epoch 6.767263427109975 Loss : 0.9743903875350952
+2021-02-06 01:29:20 |        train.py |    INFO |      train | Validation Accuracy : 0.407
+2021-02-06 01:29:20 |        train.py |    INFO |      train | Epoch 6.8951406649616365 Loss : 1.0579321384429932
+2021-02-06 01:29:21 |        train.py |    INFO |      train | Validation Accuracy : 0.4122
+2021-02-06 01:29:21 |        train.py |    INFO |      train | Begin Epoch 7 ...
+2021-02-06 01:29:21 |        train.py |    INFO |      train | Epoch 7.127877237851663 Loss : 1.0122450590133667
+2021-02-06 01:29:21 |        train.py |    INFO |      train | Validation Accuracy : 0.3942
+2021-02-06 01:29:22 |        train.py |    INFO |      train | Epoch 7.255754475703325 Loss : 0.9521294236183167
+2021-02-06 01:29:22 |        train.py |    INFO |      train | Validation Accuracy : 0.4023
+2021-02-06 01:29:22 |        train.py |    INFO |      train | Epoch 7.383631713554987 Loss : 0.8908792734146118
+2021-02-06 01:29:22 |        train.py |    INFO |      train | Validation Accuracy : 0.3963
+2021-02-06 01:29:23 |        train.py |    INFO |      train | Epoch 7.5115089514066495 Loss : 0.7604706287384033
+2021-02-06 01:29:23 |        train.py |    INFO |      train | Validation Accuracy : 0.4099
+2021-02-06 01:29:23 |        train.py |    INFO |      train | Epoch 7.639386189258312 Loss : 0.9939010739326477
+2021-02-06 01:29:23 |        train.py |    INFO |      train | Validation Accuracy : 0.3986
+2021-02-06 01:29:24 |        train.py |    INFO |      train | Epoch 7.767263427109975 Loss : 0.8649516105651855
+2021-02-06 01:29:24 |        train.py |    INFO |      train | Validation Accuracy : 0.4078
+2021-02-06 01:29:24 |        train.py |    INFO |      train | Epoch 7.8951406649616365 Loss : 0.8784836530685425
+2021-02-06 01:29:24 |        train.py |    INFO |      train | Validation Accuracy : 0.4092
+2021-02-06 01:29:25 |        train.py |    INFO |      train | Begin Epoch 8 ...
+2021-02-06 01:29:25 |        train.py |    INFO |      train | Epoch 8.127877237851662 Loss : 0.9223362803459167
+2021-02-06 01:29:25 |        train.py |    INFO |      train | Validation Accuracy : 0.4142
+2021-02-06 01:29:25 |        train.py |    INFO |      train | Epoch 8.255754475703325 Loss : 1.029451847076416
+2021-02-06 01:29:26 |        train.py |    INFO |      train | Validation Accuracy : 0.4308
+2021-02-06 01:29:26 |        train.py |    INFO |      train | Best validation metric found ... Saving ...
+2021-02-06 01:29:26 |        train.py |    INFO |      train | Epoch 8.383631713554987 Loss : 0.9030191898345947
+2021-02-06 01:29:26 |        train.py |    INFO |      train | Validation Accuracy : 0.3888
+2021-02-06 01:29:26 |        train.py |    INFO |      train | Epoch 8.51150895140665 Loss : 0.8143748044967651
+2021-02-06 01:29:26 |        train.py |    INFO |      train | Validation Accuracy : 0.4077
+2021-02-06 01:29:27 |        train.py |    INFO |      train | Epoch 8.639386189258312 Loss : 0.8512638807296753
+2021-02-06 01:29:27 |        train.py |    INFO |      train | Validation Accuracy : 0.4079
+2021-02-06 01:29:27 |        train.py |    INFO |      train | Epoch 8.767263427109974 Loss : 1.0257092714309692
+2021-02-06 01:29:27 |        train.py |    INFO |      train | Validation Accuracy : 0.3829
+2021-02-06 01:29:28 |        train.py |    INFO |      train | Epoch 8.895140664961637 Loss : 1.0189483165740967
+2021-02-06 01:29:28 |        train.py |    INFO |      train | Validation Accuracy : 0.4174
+2021-02-06 01:29:28 |        train.py |    INFO |      train | Begin Epoch 9 ...
+2021-02-06 01:29:28 |        train.py |    INFO |      train | Epoch 9.127877237851662 Loss : 0.9439359903335571
+2021-02-06 01:29:28 |        train.py |    INFO |      train | Validation Accuracy : 0.3904
+2021-02-06 01:29:29 |        train.py |    INFO |      train | Epoch 9.255754475703325 Loss : 0.8740561008453369
+2021-02-06 01:29:29 |        train.py |    INFO |      train | Validation Accuracy : 0.3785
+2021-02-06 01:29:29 |        train.py |    INFO |      train | Epoch 9.383631713554987 Loss : 1.0458576679229736
+2021-02-06 01:29:29 |        train.py |    INFO |      train | Validation Accuracy : 0.3782
+2021-02-06 01:29:29 |        train.py |    INFO |      train | Epoch 9.51150895140665 Loss : 1.1701189279556274
+2021-02-06 01:29:30 |        train.py |    INFO |      train | Validation Accuracy : 0.407
+2021-02-06 01:29:30 |        train.py |    INFO |      train | Epoch 9.639386189258312 Loss : 0.8148437142372131
+2021-02-06 01:29:30 |        train.py |    INFO |      train | Validation Accuracy : 0.4013
+2021-02-06 01:29:30 |        train.py |    INFO |      train | Epoch 9.767263427109974 Loss : 0.9129012227058411
+2021-02-06 01:29:30 |        train.py |    INFO |      train | Validation Accuracy : 0.4177
+2021-02-06 01:29:31 |        train.py |    INFO |      train | Epoch 9.895140664961637 Loss : 0.9330108761787415
+2021-02-06 01:29:31 |        train.py |    INFO |      train | Validation Accuracy : 0.4126
+2021-02-06 01:29:31 |        train.py |    INFO |   <module> | Training Finished ... Time Elapsed : 0.6229068676630656 min(s)

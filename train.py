@@ -3,6 +3,7 @@ import time
 import pickle
 import random
 import logging
+import inspect
 
 import torch
 import torch.nn as nn
@@ -15,30 +16,30 @@ from typing import Callable, List, Dict, Tuple, Union
 
 from torch.utils.data import DataLoader
 
-from module import DigitFuncApproximator, DigitFuncDataset
+from data import DigitFuncDataset
+from module import DigitFuncApproximator
 
 @dataclass
 class Configuration:
     # Data Args
-    n_train_samples: int = 60_000
+    n_train_samples: int = 100_000
     n_valid_samples: int = 10_000
     max_n_elements: int = 10
-    function: Callable = torch.max
+    function: Callable = lambda x: torch.sum(x[x > 0], dim=-1)
 
     # Dataset Path (if cached)
     train_path: str = 'data/train.pkl'
     valid_path: str = 'data/valid.pkl'
-    log_path: str = 'checkpoint/train.log'
-    save_path: str = 'checkpoint/best_model.pt'
+    save_path: str = 'checkpoint'
 
     # Train Args
-    device: Union[torch.device, str] = 'cpu'
+    device: Union[torch.device, str] = 'cuda'
     n_epochs: int = 10
     batch_sz: int = 128
     save_step: int = 100
     log_every: int = 100
 
-    learning_rate: float = 1e-3
+    learning_rate: float = 1e-4
     gradient_accumulation_step: int = 1
     weight_decay: float = 0.0
 
@@ -53,23 +54,29 @@ class Configuration:
     # Seed
     seed: int = 42
 
+    def __str__(self):
+        config_str = ''
+        for k,v in self.__dict__.items():
+            if k == 'function':
+                func_str = inspect.getsource(v)
+                v = func_str.replace('function: Callable = ', '').strip()
+            config_str += '{} = {}\n'.format(k,v)
+        return config_str
+
+
 def train(args: "Configuration", logger: "logging.Logger"):
     device = args.device
 
     # Dataset
-    if os.path.isfile(args.train_path) and os.path.isfile(args.valid_path):
-        train_set = pickle.load(open(args,train_path, 'rb'))
-        valid_set = pickle.load(open(args.valid_path, 'rb'))
-    else:
-        train_set = DigitFuncDataset(args.n_train_samples, args.max_n_elements, args.function)
-        valid_set = DigitFuncDataset(args.n_valid_samples, args.max_n_elements, args.function)
-        pickle.dump(train_set, open(args.train_path, 'wb'))
-        pickle.dump(valid_set, open(args.valid_path, 'wb'))
-    train_loader = tqdm(DataLoader(train_set, batch_size=args.batch_sz, shuffle=True))
-    valid_loader = tqdm(DataLoader(valid_set, batch_size=args.batch_sz, shuffle=True))
+    train_set = DigitFuncDataset(args.n_train_samples, args.max_n_elements, args.function, args.train_path)
+    valid_set = DigitFuncDataset(args.n_valid_samples, args.max_n_elements, args.function, args.valid_path)
+
+    train_loader = DataLoader(train_set, batch_size=args.batch_sz, shuffle=True)
+    valid_loader = DataLoader(valid_set, batch_size=args.batch_sz, shuffle=False)
     
     # Model
     model = DigitFuncApproximator(args.d_embed, args.d_hidden, args.activation)
+    logger.info(str(model))
 
     # Loss
     criterion  = getattr(nn, args.criterion)()
@@ -94,7 +101,7 @@ def train(args: "Configuration", logger: "logging.Logger"):
 
     model.to(device)
     best_metric = 0.
-    for epoch in range(args.n_epochs):
+    for epoch in tqdm(range(args.n_epochs)):
         logger.info('Begin Epoch {} ...'.format(epoch))
         for idx, batch in enumerate(train_loader):
             inputs = batch['input'].to(device)
@@ -118,8 +125,9 @@ def train(args: "Configuration", logger: "logging.Logger"):
                 logger.info('Validation Accuracy : {}'.format(metric))
 
                 if best_metric < metric:
+                    best_metric = metric
                     logger.info('Best validation metric found ... Saving ...')
-                    torch.save(model.state_dict(), args.train_path)
+                    torch.save(model.state_dict(), os.path.join(args.save_path, 'best_model.pt'))
 
 def validate(args: "Configuration", model: "nn.Module", valid_loader: "DataLoader"):
     device = args.device
@@ -134,18 +142,26 @@ def validate(args: "Configuration", model: "nn.Module", valid_loader: "DataLoade
             logits = model(inputs).cpu()
             preds  = torch.round(logits)
             # Correct and total examples
-            crt += torch.sum(preds == labels).item()
+            crt += torch.sum(preds.squeeze() == labels.squeeze()).item()
             tot += len(labels)
     acc = crt / tot
     return acc
-            
+
+def get_logger(args: "Configuration"):
+    current_time = time.strftime("%Y-%m-%d-%H:%M:%S", time.gmtime())   
+    logging.basicConfig(
+        filename='{}/{}_train.log'.format(args.save_path, current_time), 
+        filemode='w', 
+        format="%(asctime)s | %(filename)15s | %(levelname)7s | %(funcName)10s | %(message)s",
+        datefmt='%Y-%m-%d %H:%M:%S',
+        level=logging.INFO
+    )
+    logger = logging.getLogger(__name__)
+    return logger
+
 if __name__ == '__main__':
     args = Configuration()
-    logging.basicConfig(filename=args.log_path,
-                        format='%(asctime)s - %(levelname)s - %(name)s - %(message)s',
-                        datefmt='%Y/%m/%d %H:%M:%S',
-                        level=logging.INFO)
-    logger = logging.getLogger()
+    logger = get_logger(args)
 
     logger.info('Configurations ...')
     logger.info('{}'.format(str(args)))
