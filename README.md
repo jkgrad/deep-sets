@@ -1,5 +1,5 @@
 # deep-sets
-This repository contains an experimental re-implementation of Deep Sets architecture, proposed in 2017 paper [Deep Sets](https://arxiv.org/pdf/1703.06114.pdf). 
+This repository contains an experimental re-implementation of Deep Sets architecture in PyTorch, proposed in 2017 paper [Deep Sets](https://arxiv.org/pdf/1703.06114.pdf). 
 
 ## Deep Sets
 Deep sets architecture aims to approximate functions acting on a set. To be more mathematically accurate, deep sets will approximate a mapping from a power set of some set to a target space (real space for regression and discrete space for classification task). 
