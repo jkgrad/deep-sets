@@ -11,16 +11,17 @@ Deep sets architecture aims to approximate functions acting on a set. To be more
 ### Permutation Invariant Functions
 A permutation invariant function acting on a set input is defined to be a function that does not change its output due to permutation on the input elements.
 
-![perm-invariant](https://github.com/jkgrad/deep-sets/blob/main/assets/perm-invariant.png)
+
+<img src="https://github.com/jkgrad/deep-sets/blob/main/assets/perm-invariant.png" height="50">
 
 Such functions can be decomposed in the following form, which we can exploit in building the neural network architecture. 
 
-![perm-invariant-decompose](https://github.com/jkgrad/deep-sets/blob/main/assets/perm-invariant-decompose.png)
+<img src="https://github.com/jkgrad/deep-sets/blob/main/assets/perm-decompose.png" height="50">
 
 ### Permutation Equivariant Functions
 A permutation equivariant function acting on a set input is defined to be a function that permutes its output in the same order as the permutation on its inputs.
 
-![perm-equivariant](https://github.com/jkgrad/deep-sets/blob/main/assets/perm-equivariant.png)
+<img src="https://github.com/jkgrad/deep-sets/blob/main/assets/perm-equivariant.png" height="50">
 
 ## Notes
 The current implementation includes a permutation invariant function approximator on set of digits with some more rooms to improve. Note that following architecture was experimented for approximating a sum of digits. 
